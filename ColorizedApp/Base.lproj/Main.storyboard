@@ -116,12 +116,10 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fX9-iP-Ycd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="1bT-Ng-FOF"/>
-                            <constraint firstItem="3Ey-ze-Jov" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.903382" id="DDu-gd-7TK"/>
                             <constraint firstItem="fX9-iP-Ycd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DyY-NR-tvZ"/>
                             <constraint firstAttribute="trailing" secondItem="fX9-iP-Ycd" secondAttribute="trailing" constant="20" id="FSq-GX-qJH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="3Ey-ze-Jov" secondAttribute="trailing" constant="20" id="VX0-Ra-Oar"/>
                             <constraint firstItem="fX9-iP-Ycd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aEY-dv-voB"/>
-                            <constraint firstItem="fX9-iP-Ycd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.903382" id="iKS-ju-yQt"/>
                             <constraint firstItem="3Ey-ze-Jov" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r3i-KI-PWd"/>
                             <constraint firstItem="3Ey-ze-Jov" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="ueg-2C-rJp"/>
                             <constraint firstItem="3Ey-ze-Jov" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="wvC-cV-suH"/>
