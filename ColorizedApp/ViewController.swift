@@ -8,47 +8,51 @@
 import UIKit
 
 class ViewController: UIViewController {
+    //MARK: - IB Outlets
+    @IBOutlet private var ColorView: UIView!
 
-    @IBOutlet var ColorView: UIView!
-    
-    @IBOutlet var redSliderValue: UILabel!
-    @IBOutlet var greenSliderValue: UILabel!
-    @IBOutlet var blueSliderValue: UILabel!
-    
+    @IBOutlet private var redSliderValue: UILabel!
+    @IBOutlet private var greenSliderValue: UILabel!
+    @IBOutlet private var blueSliderValue: UILabel!
+
+    //MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         ColorView.layer.cornerRadius = 15
         ColorView.layer.borderWidth = 5
         ColorView.layer.borderColor = UIColor.black.cgColor
         changeColor()
     }
 
-    @IBAction func redSliderAction(_ sender: UISlider) {
+    //MARK: - IB Actions
+    @IBAction private func redSliderAction(_ sender: UISlider) {
         changeValue(of: redSliderValue, from: sender)
         changeColor()
     }
-    @IBAction func greenSliderAction(_ sender: UISlider) {
+
+    @IBAction private func greenSliderAction(_ sender: UISlider) {
         changeValue(of: greenSliderValue, from: sender)
         changeColor()
     }
-    @IBAction func blueSliderAction(_ sender: UISlider) {
+
+    @IBAction private func blueSliderAction(_ sender: UISlider) {
         changeValue(of: blueSliderValue, from: sender)
         changeColor()
     }
-    
+
+    //MARK: - Private Methods
     private func changeValue(of value: UILabel, from sender: UISlider) {
         let sliderValue = round(sender.value * 100) / 100
         value.text = String(sliderValue)
     }
-    
+
     private func changeColor() {
         let red = CGFloat(Double(redSliderValue.text!)!)
         let green = CGFloat(Double(greenSliderValue.text!)!)
         let blue = CGFloat(Double(blueSliderValue.text!)!)
-        
+
         let newColor = CGColor(red: red, green: green, blue: blue, alpha: 1)
         ColorView.layer.backgroundColor = newColor
     }
 }
-
