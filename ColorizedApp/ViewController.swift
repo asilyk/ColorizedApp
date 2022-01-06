@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     //MARK: - IB Outlets
-    @IBOutlet private var ColorView: UIView!
+    @IBOutlet private var colorView: UIView!
 
     @IBOutlet private var redSliderValue: UILabel!
     @IBOutlet private var greenSliderValue: UILabel!
@@ -19,9 +19,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        ColorView.layer.cornerRadius = 15
-        ColorView.layer.borderWidth = 5
-        ColorView.layer.borderColor = UIColor.black.cgColor
+        colorView.layer.cornerRadius = 15
+        colorView.layer.borderWidth = 5
+        colorView.layer.borderColor = UIColor.black.cgColor
         changeColor()
     }
 
@@ -53,6 +53,6 @@ class ViewController: UIViewController {
         let blue = CGFloat(Double(blueSliderValue.text!)!)
 
         let newColor = CGColor(red: red, green: green, blue: blue, alpha: 1)
-        ColorView.layer.backgroundColor = newColor
+        colorView.layer.backgroundColor = newColor
     }
 }
