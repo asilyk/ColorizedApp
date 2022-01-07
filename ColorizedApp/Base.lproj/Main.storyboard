@@ -95,9 +95,6 @@
                                                 </connections>
                                             </slider>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="Dmf-Wl-fmE" firstAttribute="centerY" secondItem="GjS-Sd-CaK" secondAttribute="centerY" id="6b4-pG-KUK"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
