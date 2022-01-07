@@ -124,8 +124,11 @@
                     </view>
                     <connections>
                         <outlet property="ColorView" destination="3Ey-ze-Jov" id="cLc-sm-C3P"/>
+                        <outlet property="blueSlider" destination="PzL-RR-EDd" id="QSi-kQ-9so"/>
                         <outlet property="blueSliderValue" destination="yTv-bt-Ck1" id="Vkc-xw-9uS"/>
+                        <outlet property="greenSlider" destination="Dmf-Wl-fmE" id="qX5-CZ-YYY"/>
                         <outlet property="greenSliderValue" destination="E3M-lj-4im" id="ezu-7d-0XA"/>
+                        <outlet property="redSlider" destination="XiG-Kn-BCw" id="cKE-5m-ayl"/>
                         <outlet property="redSliderValue" destination="UMK-gE-lva" id="UdF-A6-nM5"/>
                     </connections>
                 </viewController>
