@@ -19,6 +19,10 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var greenSliderValue: UILabel!
     @IBOutlet private var blueSliderValue: UILabel!
     
+    @IBOutlet private var redTF: UITextField!
+    @IBOutlet private var greenTF: UITextField!
+    @IBOutlet private var blueTF: UITextField!
+
     //MARK: - Public Properties
     var initialColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
@@ -36,17 +40,17 @@ class SettingsViewController: UIViewController {
 
     //MARK: - IB Actions
     @IBAction private func redSliderAction(_ sender: UISlider) {
-        changeValue(of: redSliderValue, from: sender)
+        changeValue(of: redSliderValue, and: redTF, from: sender)
         changeColor()
     }
 
     @IBAction private func greenSliderAction(_ sender: UISlider) {
-        changeValue(of: greenSliderValue, from: sender)
+        changeValue(of: greenSliderValue, and: greenTF, from: sender)
         changeColor()
     }
 
     @IBAction private func blueSliderAction(_ sender: UISlider) {
-        changeValue(of: blueSliderValue, from: sender)
+        changeValue(of: blueSliderValue, and: blueTF, from: sender)
         changeColor()
     }
 
@@ -70,13 +74,14 @@ class SettingsViewController: UIViewController {
         blueSlider.value = Float(blue)
 
         changeColor()
-        changeValue(of: redSliderValue, from: redSlider)
-        changeValue(of: greenSliderValue, from: greenSlider)
-        changeValue(of: blueSliderValue, from: blueSlider)
+        changeValue(of: redSliderValue, and: redTF, from: redSlider)
+        changeValue(of: greenSliderValue, and: greenTF, from: greenSlider)
+        changeValue(of: blueSliderValue, and: blueTF, from: blueSlider)
     }
 
-    private func changeValue(of value: UILabel, from sender: UISlider) {
+    private func changeValue(of value: UILabel, and textField: UITextField, from sender: UISlider) {
         value.text = String(format: "%.2f", sender.value)
+        textField.text = String(format: "%.2f", sender.value)
     }
 
     private func changeColor() {
