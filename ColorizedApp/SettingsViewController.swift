@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
     //MARK: - IB Outlets
     @IBOutlet private var colorView: UIView!
 
@@ -18,6 +18,10 @@ class ViewController: UIViewController {
     @IBOutlet private var redSliderValue: UILabel!
     @IBOutlet private var greenSliderValue: UILabel!
     @IBOutlet private var blueSliderValue: UILabel!
+    
+    //MARK: - Public Properties
+    var initialColor: UIColor!
+    var delegate: SettingsViewControllerDelegate!
 
     //MARK: - Life Cycles Methods
     override func viewDidLoad() {
@@ -27,7 +31,7 @@ class ViewController: UIViewController {
         colorView.layer.borderWidth = 5
         colorView.layer.borderColor = UIColor.black.cgColor
 
-        changeColor()
+        setColor()
     }
 
     //MARK: - IB Actions
@@ -46,7 +50,31 @@ class ViewController: UIViewController {
         changeColor()
     }
 
+    @IBAction func doneButtonPressed() {
+        guard let color = colorView.layer.backgroundColor else { return }
+        delegate.setNewViewColor(to: color)
+        dismiss(animated: true)
+    }
+
     //MARK: - Private Methods
+    private func setColor() {
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        initialColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        redSlider.value = Float(red)
+        greenSlider.value = Float(green)
+        blueSlider.value = Float(blue)
+
+        changeColor()
+        changeValue(of: redSliderValue, from: redSlider)
+        changeValue(of: greenSliderValue, from: greenSlider)
+        changeValue(of: blueSliderValue, from: blueSlider)
+    }
+
     private func changeValue(of value: UILabel, from sender: UISlider) {
         value.text = String(format: "%.2f", sender.value)
     }
