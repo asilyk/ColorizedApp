@@ -105,21 +105,21 @@
                                                 <rect key="frame" x="-2" y="0.0" width="171" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
                                                 <connections>
-                                                    <action selector="redSliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="TPD-08-tJP"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="dWC-Va-0VB"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Dmf-Wl-fmE" userLabel="Green Horizontal Slider">
                                                 <rect key="frame" x="-2" y="58" width="171" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemGreenColor"/>
                                                 <connections>
-                                                    <action selector="greenSliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="1Va-If-Sq2"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="HSK-mv-ycc"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="PzL-RR-EDd" userLabel="Blue Horizontal Slider">
                                                 <rect key="frame" x="-2" y="116" width="171" height="31"/>
                                                 <color key="minimumTrackTintColor" systemColor="systemBlueColor"/>
                                                 <connections>
-                                                    <action selector="blueSliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="lr8-8g-bHp"/>
+                                                    <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="oiw-L8-TCe"/>
                                                 </connections>
                                             </slider>
                                         </subviews>

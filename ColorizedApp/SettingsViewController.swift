@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var redSliderValue: UILabel!
     @IBOutlet private var greenSliderValue: UILabel!
     @IBOutlet private var blueSliderValue: UILabel!
-    
+
     @IBOutlet private var redTF: UITextField!
     @IBOutlet private var greenTF: UITextField!
     @IBOutlet private var blueTF: UITextField!
@@ -31,36 +31,61 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        colorView.layer.cornerRadius = 15
-        colorView.layer.borderWidth = 5
-        colorView.layer.borderColor = UIColor.black.cgColor
+        setupColorView()
 
         setColor()
     }
 
     //MARK: - IB Actions
-    @IBAction private func redSliderAction(_ sender: UISlider) {
-        changeValue(of: redSliderValue, and: redTF, from: sender)
-        changeColor()
-    }
+    @IBAction private func sliderAction(_ sender: UISlider) {
+        changeValues(from: sender)
 
-    @IBAction private func greenSliderAction(_ sender: UISlider) {
-        changeValue(of: greenSliderValue, and: greenTF, from: sender)
-        changeColor()
-    }
-
-    @IBAction private func blueSliderAction(_ sender: UISlider) {
-        changeValue(of: blueSliderValue, and: blueTF, from: sender)
         changeColor()
     }
 
     @IBAction func doneButtonPressed() {
         guard let color = colorView.layer.backgroundColor else { return }
+
         delegate.setNewViewColor(to: color)
+
         dismiss(animated: true)
     }
 
     //MARK: - Private Methods
+    private func setupColorView() {
+        colorView.layer.cornerRadius = 15
+        colorView.layer.borderWidth = 5
+        colorView.layer.borderColor = UIColor.black.cgColor
+    }
+
+    private func changeValues(from sender: UISlider) {
+        let label: UILabel
+        let textField: UITextField
+
+        switch sender {
+        case redSlider:
+            label = redSliderValue
+            textField = redTF
+        case greenSlider:
+            label = greenSliderValue
+            textField = greenTF
+        default:
+            label = blueSliderValue
+            textField = blueTF
+        }
+
+        label.text = String(format: "%.2f", sender.value)
+        textField.text = String(format: "%.2f", sender.value)
+    }
+
+    private func changeColor() {
+        let red = CGFloat(redSlider.value)
+        let green = CGFloat(greenSlider.value)
+        let blue = CGFloat(blueSlider.value)
+
+        colorView.layer.backgroundColor = CGColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+
     private func setColor() {
         var red: CGFloat = 0
         var green: CGFloat = 0
@@ -74,21 +99,9 @@ class SettingsViewController: UIViewController {
         blueSlider.value = Float(blue)
 
         changeColor()
-        changeValue(of: redSliderValue, and: redTF, from: redSlider)
-        changeValue(of: greenSliderValue, and: greenTF, from: greenSlider)
-        changeValue(of: blueSliderValue, and: blueTF, from: blueSlider)
-    }
 
-    private func changeValue(of value: UILabel, and textField: UITextField, from sender: UISlider) {
-        value.text = String(format: "%.2f", sender.value)
-        textField.text = String(format: "%.2f", sender.value)
-    }
-
-    private func changeColor() {
-        let red = CGFloat(redSlider.value)
-        let green = CGFloat(greenSlider.value)
-        let blue = CGFloat(blueSlider.value)
-
-        colorView.layer.backgroundColor = CGColor(red: red, green: green, blue: blue, alpha: 1)
+        changeValues(from: redSlider)
+        changeValues(from: greenSlider)
+        changeValues(from: blueSlider)
     }
 }
