@@ -158,7 +158,14 @@ extension SettingsViewController: UITextFieldDelegate {
         else {
             if textField.text != "" { showAlert() }
 
-            textField.text = redSliderValue.text
+            switch textField {
+            case redTF:
+                textField.text = redSliderValue.text
+            case greenTF:
+                textField.text = greenSliderValue.text
+            default:
+                textField.text = blueSliderValue.text
+            }
 
             return
         }
