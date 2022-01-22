@@ -34,8 +34,8 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         setupColorView()
-        setColor()
         setupTextFields()
+        setColor()
     }
 
     //MARK: - IB Actions
@@ -47,7 +47,9 @@ class SettingsViewController: UIViewController {
 
     @IBAction func doneButtonPressed() {
         guard let color = colorView.layer.backgroundColor else { return }
+
         delegate.setNewViewColor(to: color)
+
         dismiss(animated: true)
     }
 }
@@ -61,7 +63,17 @@ extension SettingsViewController {
     }
 
     private func setupTextFields() {
+        for textField in textFieldsStackView.arrangedSubviews {
+            guard let textField = textField as? UITextField else { return }
+            textField.inputAccessoryView = createToolBar()
+            textField.delegate = self
+            textField.keyboardType = .decimalPad
+        }
+    }
+
+    private func createToolBar() -> UIToolbar {
         let bar = UIToolbar()
+
         let leftSpace = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
@@ -73,15 +85,24 @@ extension SettingsViewController {
             target: self,
             action: #selector(doneEditingButtonPressed)
         )
+
         bar.items = [leftSpace, done]
         bar.sizeToFit()
+        
+        return bar
+    }
 
-        for textField in textFieldsStackView.arrangedSubviews {
-            guard let textField = textField as? UITextField else { return }
-            textField.inputAccessoryView = bar
-            textField.delegate = self
-            textField.keyboardType = .decimalPad
+    private func setColor() {
+        guard let sliders = slidersStackView.arrangedSubviews as? [UISlider]
+        else { return }
+        guard let rgbComponents = initialColor.components else { return }
+
+        for (slider, rgbComponent) in zip(sliders, rgbComponents) {
+            slider.value = Float(rgbComponent)
+            changeValues(from: slider)
         }
+
+        changeColor()
     }
 
     private func changeValues(from sender: UISlider) {
@@ -116,19 +137,6 @@ extension SettingsViewController {
             alpha: 1
         )
     }
-
-    private func setColor() {
-        guard let sliders = slidersStackView.arrangedSubviews as? [UISlider]
-        else { return }
-        guard let rgbComponents = initialColor.components else { return }
-
-        for (slider, rgbComponent) in zip(sliders, rgbComponents) {
-            slider.value = Float(rgbComponent)
-            changeValues(from: slider)
-        }
-
-        changeColor()
-    }
 }
 
 extension SettingsViewController: UITextFieldDelegate {
@@ -147,8 +155,10 @@ extension SettingsViewController: UITextFieldDelegate {
               let newValue = Float(text),
               0...1 ~= newValue
         else {
-            showAlert()
+            if textField.text != "" { showAlert() }
+
             textField.text = redSliderValue.text
+
             return
         }
 
