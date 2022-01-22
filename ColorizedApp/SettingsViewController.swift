@@ -24,7 +24,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var blueTF: UITextField!
 
     //MARK: - Public Properties
-    var initialColor: UIColor!
+    var initialColor: CGColor!
     var delegate: SettingsViewControllerDelegate!
 
     //MARK: - Life Cycles Methods
@@ -32,7 +32,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         setupColorView()
-
         setColor()
     }
 
@@ -45,9 +44,7 @@ class SettingsViewController: UIViewController {
 
     @IBAction func doneButtonPressed() {
         guard let color = colorView.layer.backgroundColor else { return }
-
         delegate.setNewViewColor(to: color)
-
         dismiss(animated: true)
     }
 
@@ -87,16 +84,9 @@ class SettingsViewController: UIViewController {
     }
 
     private func setColor() {
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-
-        initialColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-
-        redSlider.value = Float(red)
-        greenSlider.value = Float(green)
-        blueSlider.value = Float(blue)
+        redSlider.value = Float(initialColor.components![0])
+        greenSlider.value = Float(initialColor.components![1])
+        blueSlider.value = Float(initialColor.components![2])
 
         changeColor()
 

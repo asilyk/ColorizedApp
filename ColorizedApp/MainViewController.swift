@@ -12,13 +12,18 @@ protocol SettingsViewControllerDelegate {
 }
 
 class MainViewController: UIViewController {
+    //MARK: - Life Cycles Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.layer.backgroundColor = CGColor(srgbRed: 1, green: 1, blue: 1, alpha: 1)
+    }
+
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController else { return }
 
-        guard let mainViewColor = view.layer.backgroundColor else { return }
-
-        settingsVC.initialColor = UIColor(cgColor: mainViewColor)
+        settingsVC.initialColor = view.layer.backgroundColor
         settingsVC.delegate = self
     }
 }
