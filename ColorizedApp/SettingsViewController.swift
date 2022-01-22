@@ -65,8 +65,9 @@ extension SettingsViewController {
     private func setupTextFields() {
         for textField in textFieldsStackView.arrangedSubviews {
             guard let textField = textField as? UITextField else { return }
-            textField.inputAccessoryView = createToolBar()
+
             textField.delegate = self
+            textField.inputAccessoryView = createToolBar()
             textField.keyboardType = .decimalPad
         }
     }
