@@ -73,21 +73,21 @@ extension SettingsViewController {
 
     private func createToolBar() -> UIToolbar {
         let bar = UIToolbar()
+        bar.sizeToFit()
 
         let leftSpace = UIBarButtonItem(
             barButtonSystemItem: .flexibleSpace,
             target: nil,
-            action: .none
+            action: nil
         )
+
         let done = UIBarButtonItem(
-            title: "Done",
-            style: .plain,
+            barButtonSystemItem: .done,
             target: self,
             action: #selector(doneEditingButtonPressed)
         )
 
         bar.items = [leftSpace, done]
-        bar.sizeToFit()
         
         return bar
     }
