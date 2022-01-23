@@ -164,13 +164,13 @@ extension SettingsViewController: UITextFieldDelegate {
 
         switch textField {
         case redTF:
-            redSlider.value = newValue
+            redSlider.setValue(newValue, animated: true)
             redSliderValue.text = newValueText
         case greenTF:
-            greenSlider.value = newValue
+            greenSlider.setValue(newValue, animated: true)
             greenSliderValue.text = newValueText
         default:
-            blueSlider.value = newValue
+            blueSlider.setValue(newValue, animated: true)
             blueSliderValue.text = newValueText
         }
 
