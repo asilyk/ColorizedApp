@@ -81,14 +81,14 @@ extension SettingsViewController {
             action: nil
         )
 
-        let done = UIBarButtonItem(
+        let doneButton = UIBarButtonItem(
             barButtonSystemItem: .done,
             target: self,
             action: #selector(doneEditingButtonPressed)
         )
 
-        bar.items = [leftSpace, done]
-        
+        bar.items = [leftSpace, doneButton]
+
         return bar
     }
 
@@ -178,7 +178,7 @@ extension SettingsViewController: UITextFieldDelegate {
 
         changeColor()
     }
-    
+
     private func setPreviousValue(for textField: UITextField) {
         switch textField {
         case redTF:
