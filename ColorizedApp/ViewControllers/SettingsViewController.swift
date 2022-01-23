@@ -137,6 +137,7 @@ extension SettingsViewController {
     }
 }
 
+//MARK: - UITextFieldDelegate
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = nil
