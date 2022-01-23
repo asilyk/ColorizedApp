@@ -14,7 +14,6 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var redSlider: UISlider!
     @IBOutlet private var greenSlider: UISlider!
     @IBOutlet private var blueSlider: UISlider!
-    @IBOutlet private var slidersStackView: UIStackView!
 
     @IBOutlet private var redSliderValue: UILabel!
     @IBOutlet private var greenSliderValue: UILabel!
@@ -26,7 +25,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet private var textFieldsStackView: UIStackView!
 
     //MARK: - Public Properties
-    var initialColor: CGColor!
+    var initialColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
 
     //MARK: - Life Cycles Methods
@@ -46,7 +45,7 @@ class SettingsViewController: UIViewController {
     }
 
     @IBAction func doneButtonPressed() {
-        guard let color = colorView.layer.backgroundColor else { return }
+        guard let color = colorView.backgroundColor else { return }
 
         delegate.setNewViewColor(to: color)
 
@@ -94,14 +93,16 @@ extension SettingsViewController {
     }
 
     private func setColor() {
-        guard let sliders = slidersStackView.arrangedSubviews as? [UISlider]
-        else { return }
-        guard let rgbComponents = initialColor.components else { return }
+        let ciColor = CIColor(color: initialColor)
 
-        for (slider, rgbComponent) in zip(sliders, rgbComponents) {
-            slider.value = Float(rgbComponent)
-            changeValues(from: slider)
-        }
+        redSlider.value = Float(ciColor.red)
+        changeValues(from: redSlider)
+
+        greenSlider.value = Float(ciColor.green)
+        changeValues(from: greenSlider)
+
+        blueSlider.value = Float(ciColor.blue)
+        changeValues(from: blueSlider)
 
         changeColor()
     }
@@ -127,14 +128,10 @@ extension SettingsViewController {
     }
 
     private func changeColor() {
-        let red = CGFloat(redSlider.value)
-        let green = CGFloat(greenSlider.value)
-        let blue = CGFloat(blueSlider.value)
-
         colorView.layer.backgroundColor = CGColor(
-            red: red,
-            green: green,
-            blue: blue,
+            red: CGFloat(redSlider.value),
+            green: CGFloat(greenSlider.value),
+            blue: CGFloat(blueSlider.value),
             alpha: 1
         )
     }
@@ -158,14 +155,7 @@ extension SettingsViewController: UITextFieldDelegate {
         else {
             if textField.text != "" { showAlert() }
 
-            switch textField {
-            case redTF:
-                textField.text = redSliderValue.text
-            case greenTF:
-                textField.text = greenSliderValue.text
-            default:
-                textField.text = blueSliderValue.text
-            }
+            setPreviousValue(for: textField)
 
             return
         }
@@ -187,6 +177,17 @@ extension SettingsViewController: UITextFieldDelegate {
         textField.text = newValueText
 
         changeColor()
+    }
+    
+    private func setPreviousValue(for textField: UITextField) {
+        switch textField {
+        case redTF:
+            textField.text = redSliderValue.text
+        case greenTF:
+            textField.text = greenSliderValue.text
+        default:
+            textField.text = blueSliderValue.text
+        }
     }
 
     @objc private func doneEditingButtonPressed() {

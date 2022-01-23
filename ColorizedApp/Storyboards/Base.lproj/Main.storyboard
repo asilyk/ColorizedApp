@@ -190,7 +190,6 @@
                         <outlet property="redSlider" destination="XiG-Kn-BCw" id="cKE-5m-ayl"/>
                         <outlet property="redSliderValue" destination="UMK-gE-lva" id="UdF-A6-nM5"/>
                         <outlet property="redTF" destination="xXy-oA-zad" id="37q-A5-rE1"/>
-                        <outlet property="slidersStackView" destination="GjS-Sd-CaK" id="R6U-dl-gBX"/>
                         <outlet property="textFieldsStackView" destination="ySH-qa-Yri" id="ITT-fE-clS"/>
                     </connections>
                 </viewController>

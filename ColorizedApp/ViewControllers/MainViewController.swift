@@ -8,35 +8,23 @@
 import UIKit
 
 protocol SettingsViewControllerDelegate {
-    func setNewViewColor(to color: CGColor)
+    func setNewViewColor(to color: UIColor)
 }
 
 class MainViewController: UIViewController {
-    //MARK: - Life Cycles Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.layer.backgroundColor = CGColor(
-            red: 1,
-            green: 1,
-            blue: 1,
-            alpha: 1
-        )
-    }
-
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
         guard let settingsVC = segue.destination as? SettingsViewController
         else { return }
 
-        settingsVC.initialColor = view.layer.backgroundColor
+        settingsVC.initialColor = view.backgroundColor
         settingsVC.delegate = self
     }
 }
 
 //MARK: - SettingsViewControllerDelegate
 extension MainViewController: SettingsViewControllerDelegate {
-    func setNewViewColor(to color: CGColor) {
-        view.layer.backgroundColor = color
+    func setNewViewColor(to color: UIColor) {
+        view.backgroundColor = color
     }
 }

@@ -39,6 +39,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11757D53279D113800AC158E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				116F8529279B0E25008FE04F /* MainViewController.swift */,
+				11A86632278564A2006ADE06 /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		11757D55279D115600AC158E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				11A86634278564A2006ADE06 /* Main.storyboard */,
+				11A86639278564AB006ADE06 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		11757D56279D118100AC158E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				11A8662E278564A2006ADE06 /* AppDelegate.swift */,
+				11A86630278564A2006ADE06 /* SceneDelegate.swift */,
+				11A8663C278564AB006ADE06 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		11757D58279D119500AC158E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11A86637278564AB006ADE06 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		11A86622278564A2006ADE06 = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +94,10 @@
 		11A8662D278564A2006ADE06 /* ColorizedApp */ = {
 			isa = PBXGroup;
 			children = (
-				11A8662E278564A2006ADE06 /* AppDelegate.swift */,
-				11A86630278564A2006ADE06 /* SceneDelegate.swift */,
-				116F8529279B0E25008FE04F /* MainViewController.swift */,
-				11A86632278564A2006ADE06 /* SettingsViewController.swift */,
-				11A86634278564A2006ADE06 /* Main.storyboard */,
-				11A86637278564AB006ADE06 /* Assets.xcassets */,
-				11A86639278564AB006ADE06 /* LaunchScreen.storyboard */,
-				11A8663C278564AB006ADE06 /* Info.plist */,
+				11757D53279D113800AC158E /* ViewControllers */,
+				11757D55279D115600AC158E /* Storyboards */,
+				11757D58279D119500AC158E /* Resources */,
+				11757D56279D118100AC158E /* App */,
 			);
 			path = ColorizedApp;
 			sourceTree = "<group>";
@@ -292,7 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7DXS499R9;
-				INFOPLIST_FILE = ColorizedApp/Info.plist;
+				INFOPLIST_FILE = ColorizedApp/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +343,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z7DXS499R9;
-				INFOPLIST_FILE = ColorizedApp/Info.plist;
+				INFOPLIST_FILE = ColorizedApp/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
